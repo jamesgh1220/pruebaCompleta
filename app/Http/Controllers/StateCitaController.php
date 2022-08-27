@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\StateCita;
 
 class StateCitaController extends Controller
 {
@@ -13,7 +14,8 @@ class StateCitaController extends Controller
      */
     public function index()
     {
-        //
+        $states = StateCita::all();
+        return response()->json($states);
     }
 
     /**

@@ -1919,22 +1919,14 @@ __webpack_require__.r(__webpack_exports__);
       id_state_cita: '',
       fecha: '',
       observacion: '',
-      categories: []
+      categories: [],
+      states: []
     };
   },
   methods: {
     saveCita: function saveCita() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/citas', {
-        name: this.name,
-        id_category_cita: this.id_category_cita,
-        id_state_cita: this.id_state_cita,
-        fecha: this.fecha,
-        observacion: this.observacion
-      }).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      }); // this.task = '';
+      console.log(this.id_category_cita); // axios.post('/citas', {name:this.name, id_category_cita:this.id_category_cita, id_state_cita:this.id_state_cita, fecha:this.fecha, observacion:this.observacion}).then(response => {console.log(response)}).catch(error => {console.log(error)})
+      // this.task = '';
       // this.$router.push('/');
     }
   },
@@ -1946,6 +1938,11 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       console.log(error);
     });
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/state_citas').then(function (response) {
+      _this.states = response;
+    })["catch"](function (error) {
+      console.log(error);
+    }); // console.log(this.categories)
   }
 });
 
@@ -2003,15 +2000,20 @@ var render = function render() {
         _vm.name = $event.target.value;
       }
     }
-  }), _vm._v(" "), _c("select", {
+  }), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mt-3"
+  }, [_c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.id_category_cita,
       expression: "id_category_cita"
     }],
+    staticClass: "form-select",
     attrs: {
-      name: "id_category_cita"
+      name: "id_category_cita",
+      id: "floatingSelect",
+      "aria-label": "Floating label select example"
     },
     on: {
       change: function change($event) {
@@ -2026,33 +2028,53 @@ var render = function render() {
     }
   }, _vm._l(_vm.categories.data, function (category) {
     return _c("option", {
-      key: category.id,
-      attrs: {
-        value: ""
-      }
-    }, [_vm._v(_vm._s(category.name))]);
-  }), 0), _vm._v(" "), _c("input", {
+      key: category.id
+    }, [_vm._v("\n                    " + _vm._s(category.name) + "\n                ")]);
+  }), 0), _vm._v(" "), _c("label", {
+    staticStyle: {
+      color: "black"
+    },
+    attrs: {
+      "for": "floatingSelect"
+    }
+  }, [_vm._v("Seleccione una categoria")])]), _vm._v(" "), _c("div", {
+    staticClass: "form-floating mt-3"
+  }, [_c("select", {
     directives: [{
       name: "model",
       rawName: "v-model",
       value: _vm.id_state_cita,
       expression: "id_state_cita"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-select",
     attrs: {
-      type: "number",
-      placeholder: "Estado cita"
-    },
-    domProps: {
-      value: _vm.id_state_cita
+      name: "id_category_cita",
+      id: "floatingSelect",
+      "aria-label": "Floating label select example"
     },
     on: {
-      input: function input($event) {
-        if ($event.target.composing) return;
-        _vm.id_state_cita = $event.target.value;
+      change: function change($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
+          return o.selected;
+        }).map(function (o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val;
+        });
+        _vm.id_state_cita = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
       }
     }
-  }), _vm._v(" "), _c("input", {
+  }, _vm._l(_vm.states.data, function (state) {
+    return _c("option", {
+      key: state.id
+    }, [_vm._v("\n                    " + _vm._s(state.name) + "\n                ")]);
+  }), 0), _vm._v(" "), _c("label", {
+    staticStyle: {
+      color: "black"
+    },
+    attrs: {
+      "for": "floatingSelect"
+    }
+  }, [_vm._v("Estado de la cita")])]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",

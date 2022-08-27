@@ -22,5 +22,5 @@ Route::get('/', function () {
 
 Route::resource('citas', CitasController::class);
 Route::resource('category_citas', CategoryCitaController::class);
-Route::resource('state_cita', StateCitaController::class);
+Route::resource('state_citas', StateCitaController::class);
 
