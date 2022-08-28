@@ -19,9 +19,9 @@
                     </option>
                 </select>
                 <label style="color: black;" for="floatingSelect">
-                    <p v-for="(estado, index) in estados" :key="estado.id">
+                    <div v-for="(estado, index) in estados" :key="estado.id">
                         {{cita.id_state_cita === index + 1 ? estado.nombre : ''}}
-                    </p>
+                    </div>
                 </label>
             </div>
             <input type="date" v-model="cita.fecha" name="fecha" class="mt-3">

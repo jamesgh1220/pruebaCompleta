@@ -2248,7 +2248,7 @@ var render = function render() {
       "for": "floatingSelect"
     }
   }, _vm._l(_vm.estados, function (estado, index) {
-    return _c("p", {
+    return _c("div", {
       key: estado.id
     }, [_vm._v("\n                    " + _vm._s(_vm.cita.id_state_cita === index + 1 ? estado.nombre : "") + "\n                ")]);
   }), 0)]), _vm._v(" "), _c("input", {
