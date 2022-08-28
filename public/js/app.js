@@ -2198,7 +2198,7 @@ var render = function render() {
     attrs: {
       "for": "floatingSelect"
     }
-  }, [_vm._v("Seleccione una categoria")])]), _vm._v(" "), _c("div", {
+  }, [_vm._v(_vm._s(this.cita.id_category_cita === 1 ? "Cita" : "Recordatorio"))])]), _vm._v(" "), _c("div", {
     staticClass: "form-floating mt-3"
   }, [_c("select", {
     directives: [{

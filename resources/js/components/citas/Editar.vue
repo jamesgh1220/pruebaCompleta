@@ -6,11 +6,11 @@
             <input type="text" v-model="cita.name" name="name" placeholder="Nombre cita" class="mt-3">
             <div class="form-floating mt-3">
                 <select v-model="cita.id_category_cita" name="id_category_cita" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option v-for="category in categories.data"  :key="category.id">
+                    <option v-for="category in categories.data"  :key="category.id" >
                         {{category.name}}
                     </option>
                 </select>
-                <label style="color: black;" for="floatingSelect">Seleccione una categoria</label>
+                <label style="color: black;" for="floatingSelect">{{this.cita.id_category_cita === 1 ? 'Cita' : 'Recordatorio'}}</label>
             </div>
             <div class="form-floating mt-3">
                 <select v-model="cita.id_state_cita" name="id_state_cita" class="form-select" id="floatingSelect" aria-label="Floating label select example">
