@@ -1922,7 +1922,17 @@ __webpack_require__.r(__webpack_exports__);
       fecha: '',
       observacion: '',
       categories: [],
-      states: []
+      states: [],
+      estados: [{
+        id: 1,
+        nombre: 'Pendiente'
+      }, {
+        id: 2,
+        nombre: 'Completada'
+      }, {
+        id: 3,
+        nombre: 'Cancelada'
+      }]
     };
   },
   created: function created() {
@@ -1943,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       console.log(error);
     });
+    console.log(this.cita.id_category_cita);
   },
   methods: {
     saveCita: function saveCita() {
@@ -2236,7 +2247,11 @@ var render = function render() {
     attrs: {
       "for": "floatingSelect"
     }
-  }, [_vm._v("Estado de la cita")])]), _vm._v(" "), _c("input", {
+  }, _vm._l(_vm.estados, function (estado, index) {
+    return _c("p", {
+      key: estado.id
+    }, [_vm._v("\n                    " + _vm._s(_vm.cita.id_state_cita === index + 1 ? estado.nombre : "") + "\n                ")]);
+  }), 0)]), _vm._v(" "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",

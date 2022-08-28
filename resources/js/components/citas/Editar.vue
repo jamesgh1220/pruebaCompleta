@@ -14,11 +14,15 @@
             </div>
             <div class="form-floating mt-3">
                 <select v-model="cita.id_state_cita" name="id_state_cita" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option v-for="state in states.data"  :key="state.id">
+                    <option v-for="(state) in states.data"  :key="state.id">
                         {{state.name}}
                     </option>
                 </select>
-                <label style="color: black;" for="floatingSelect">Estado de la cita</label>
+                <label style="color: black;" for="floatingSelect">
+                    <p v-for="(estado, index) in estados" :key="estado.id">
+                        {{cita.id_state_cita === index + 1 ? estado.nombre : ''}}
+                    </p>
+                </label>
             </div>
             <input type="date" v-model="cita.fecha" name="fecha" class="mt-3">
             <input type="text" v-model="cita.observacion" name="observacion" placeholder="Observacion" class="mt-3">
@@ -41,13 +45,24 @@ import axios from 'axios';
                 fecha:'',
                 observacion:'',
                 categories: [],
-                states: []
+                states: [],
+                estados: [{
+                    id: 1,
+                    nombre : 'Pendiente'
+                }, {
+                    id: 2,
+                    nombre : 'Completada'
+                }, {
+                    id: 3,
+                    nombre : 'Cancelada'
+                }]
             }
         },
         created(){
             axios.get('/citas/'+this.id+'/edit').then(response=> this.cita = response.data).catch(error=>console.log(error));
             axios.get('/category_citas').then(response => {this.categories = response}).catch(error => {console.log(error)})
             axios.get('/state_citas').then(response => {this.states = response}).catch(error => {console.log(error)})
+            console.log(this.cita.id_category_cita)
         },
         methods:{
             
