@@ -72,9 +72,13 @@ class CitasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cita = Task::find($id);
-        $cita->todo = $request['name'];
-        $cita->update();
+        $cita = Cita::find($id);
+        $cita->name = $request['name'];
+        $cita->id_category_cita = $request['id_category_cita'];
+        $cita->id_state_cita = $request['id_state_cita'];
+        $cita->fecha = $request['fecha'];
+        $cita->observacion = $request['observacion'];
+        $cita->save();
     }
 
     /**
