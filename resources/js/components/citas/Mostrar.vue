@@ -49,33 +49,6 @@
         </div>
     </div>    
 </template>
-
-
-
-
-
-        
-        
-            <!-- <input type="checkbox" :checked="checkCompleted(cita.completed)" @click="completeTask(cita)"> -->
-            <!-- <p class="mt-2">{{cita.name}}</p>
-            <p class="mt-2">{{cita.id_category_cita === 1 ? 'Cita' : 'Recordatorio'}}</p>
-            <p v-for="(estado, index) in estados" :key="estado.id">
-                {{cita.id_state_cita === index + 1 ? estado.nombre : ''}}
-            </p>
-            <p class="mt-2">{{cita.id_state_cita}}</p>
-            <p class="mt-2">{{cita.fecha}}</p>
-            <p class="mt-2">{{cita.observacion}}</p> -->
-            <!-- <div class="ml-auto d-flex">
-                <router-link :to="'/edit/'+cita.id" class="btn btn-primary">Editar</router-link>
-            </div> -->
-            
-            <!-- <form v-on:submit.prevent="deleteCita(cita.id)">
-                <button type="submit" class="btn btn-danger">Eliminar</button>
-            </form> -->
-        
-    
-
-
 <script>
     export default {
         data(){
@@ -94,10 +67,8 @@
             }
         },
         methods:{
-            getCitas(){
-                axios.get('/citas')
-                .then(response=> this.citas = response.data)
-                .catch(error=>console.log(error));
+            async getCitas(){
+                await axios.get('/citas').then(response=> this.citas = response.data).catch(error=>console.log(error));
             },
             async deleteCita(id){
                 if (confirm("Eliminar la cita ?")) {
@@ -106,10 +77,8 @@
                 }
             }
         },
-        created(){
-            axios.get('/citas')
-                .then(response=> this.citas = response.data)
-                .catch(error=>console.log(error));
+        async created(){
+            await axios.get('/citas').then(response=> this.citas = response.data).catch(error=>console.log(error));
             
         }
         

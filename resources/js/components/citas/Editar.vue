@@ -58,15 +58,13 @@ import axios from 'axios';
                 }]
             }
         },
-        created(){
-            axios.get('/citas/'+this.id+'/edit').then(response=> this.cita = response.data).catch(error=>console.log(error));
-            axios.get('/category_citas').then(response => {this.categories = response}).catch(error => {console.log(error)})
-            axios.get('/state_citas').then(response => {this.states = response}).catch(error => {console.log(error)})
-            console.log(this.cita.id_category_cita)
+        async created(){
+            await axios.get('/citas/'+this.id+'/edit').then(response=> this.cita = response.data).catch(error=>console.log(error));
+            await axios.get('/category_citas').then(response => {this.categories = response}).catch(error => {console.log(error)})
+            await axios.get('/state_citas').then(response => {this.states = response}).catch(error => {console.log(error)})
         },
         methods:{
-            
-            saveCita(){
+            async saveCita(){
                 if(this.cita.id_category_cita === 'Cita'){
                     this.cita.id_category_cita = 1;
                 }else{
@@ -80,7 +78,7 @@ import axios from 'axios';
                 }else{
                     this.cita.id_state_cita = 3;
                 }
-                axios.put('/citas/'+this.id, {name:this.cita.name, id_category_cita:this.cita.id_category_cita, id_state_cita:this.cita.id_state_cita, fecha:this.cita.fecha, observacion:this.cita.observacion}).then(response => {console.log(response)}).catch(error => {console.log(error)})
+                await axios.put('/citas/'+this.id, {name:this.cita.name, id_category_cita:this.cita.id_category_cita, id_state_cita:this.cita.id_state_cita, fecha:this.cita.fecha, observacion:this.cita.observacion}).then(response => {console.log(response)}).catch(error => {console.log(error)})
                 this.$router.push('/citalist');
             }
         }

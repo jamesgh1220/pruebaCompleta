@@ -47,7 +47,7 @@ import axios from 'axios';
             }
         },
         methods:{
-            saveCita(){
+            async saveCita(){
                 if(this.id_category_cita === 'Cita'){
                     this.id_category_cita = 1;
                 }else{
@@ -61,14 +61,14 @@ import axios from 'axios';
                 }else{
                     this.id_state_cita = 3;
                 }
-                axios.post('/citas', {name:this.name, id_category_cita:this.id_category_cita, id_state_cita:this.id_state_cita, fecha:this.fecha, observacion:this.observacion}).then(response => {console.log(response)}).catch(error => {console.log(error)})
+                await axios.post('/citas', {name:this.name, id_category_cita:this.id_category_cita, id_state_cita:this.id_state_cita, fecha:this.fecha, observacion:this.observacion}).then(response => {console.log(response)}).catch(error => {console.log(error)})
                 this.$router.push('/citalist');
             }
         }
         ,
-        mounted(){
-            axios.get('/category_citas').then(response => {this.categories = response}).catch(error => {console.log(error)})
-            axios.get('/state_citas').then(response => {this.states = response}).catch(error => {console.log(error)})
+        async mounted(){
+            await axios.get('/category_citas').then(response => {this.categories = response}).catch(error => {console.log(error)})
+            await axios.get('/state_citas').then(response => {this.states = response}).catch(error => {console.log(error)})
         }
     }
 </script>
