@@ -2289,7 +2289,7 @@ var render = function render() {
       value: _vm.cita.fecha,
       expression: "cita.fecha"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-control mt-3",
     attrs: {
       type: "date",
       name: "fecha"

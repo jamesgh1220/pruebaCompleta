@@ -24,7 +24,7 @@
                     </div>
                 </label>
             </div>
-            <input type="date" v-model="cita.fecha" name="fecha" class="mt-3">
+            <input type="date" v-model="cita.fecha" name="fecha" class="form-control mt-3">
             <input type="text" v-model="cita.observacion" name="observacion" placeholder="Observacion" class="form-control mt-3">
             <input type="submit" class="btn btn-success w-25 mt-3" value="Guardar">
         </form>
