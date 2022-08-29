@@ -1,6 +1,4 @@
 <template>
-
-
     <div class="container-fluid w-50">
         <h1 class="text-center">Crear Cita</h1>
         <form v-on:submit.prevent="saveCita" name="name" method="POST" class="d-flex justify-content-center flex-column">

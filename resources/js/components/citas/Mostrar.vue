@@ -1,26 +1,80 @@
 <template>
-    <div class="container-fluid w-75">
-        <h1 class="text-center">Listado de citas</h1>
-        <div v-for="cita in citas" :key="cita.id" class="d-flex justify-content-evenly align-items-center mt-3">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <h1 class="text-center">Listado de citas</h1>
+                <div class="table-responsive ml-1">
+                    <table class="table table-borderless w-50 mt-5">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Observacion</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="cita in citas" :key="cita.id">
+                                <td>{{cita.name}}</td>
+                                <td>{{cita.id_category_cita === 1 ? 'Cita' : 'Recordatorio'}}</td>
+                                <div v-if="cita.id_state_cita === 1">
+                                    <td>Pendiente</td>
+                                </div>
+                                <div v-else-if="cita.id_state_cita === 2">
+                                    <td>Completada</td> 
+                                </div>
+                                <div v-else>
+                                    <td>Cancelada</td>
+                                </div>
+                                <td>{{cita.fecha}}</td>
+                                <td>{{cita.observacion}}</td>
+                                <td>
+                                    <div class="ml-auto d-flex">
+                                        <router-link :to="'/edit/'+cita.id" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></router-link>
+                                    </div>
+                                </td>
+                                <td>
+                                    <form v-on:submit.prevent="deleteCita(cita.id)">
+                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>    
+</template>
+
+
+
+
+
+        
+        
             <!-- <input type="checkbox" :checked="checkCompleted(cita.completed)" @click="completeTask(cita)"> -->
-            <p class="mt-2">{{cita.name}}</p>
+            <!-- <p class="mt-2">{{cita.name}}</p>
             <p class="mt-2">{{cita.id_category_cita === 1 ? 'Cita' : 'Recordatorio'}}</p>
             <p v-for="(estado, index) in estados" :key="estado.id">
                 {{cita.id_state_cita === index + 1 ? estado.nombre : ''}}
             </p>
-            <!-- <p class="mt-2">{{cita.id_state_cita}}</p> -->
+            <p class="mt-2">{{cita.id_state_cita}}</p>
             <p class="mt-2">{{cita.fecha}}</p>
-            <p class="mt-2">{{cita.observacion}}</p>
-            <div class="ml-auto d-flex">
+            <p class="mt-2">{{cita.observacion}}</p> -->
+            <!-- <div class="ml-auto d-flex">
                 <router-link :to="'/edit/'+cita.id" class="btn btn-primary">Editar</router-link>
-            </div>
+            </div> -->
             
-            <form v-on:submit.prevent="deleteCita(cita.id)">
+            <!-- <form v-on:submit.prevent="deleteCita(cita.id)">
                 <button type="submit" class="btn btn-danger">Eliminar</button>
-            </form>
-        </div>
-    </div>
-</template>
+            </form> -->
+        
+    
+
 
 <script>
     export default {
@@ -45,9 +99,11 @@
                 .then(response=> this.citas = response.data)
                 .catch(error=>console.log(error));
             },
-            deleteCita(id){
-                axios.delete('/citas/'+id).then(response => {console.log(response)}).catch(error => {console.log(error)});
+            async deleteCita(id){
+                if (confirm("Eliminar la cita ?")) {
+                    await axios.delete('/citas/'+id).then(response => {console.log(response)}).catch(error => {console.log(error)});
                 this.getCitas();
+                }
             }
         },
         created(){
