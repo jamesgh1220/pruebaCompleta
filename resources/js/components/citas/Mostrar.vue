@@ -5,7 +5,7 @@
                 <h3 class="text-center">Listado de citas</h3>
                 <div class="table-responsive">
                     <table class="table table-borderless mt-3">
-                        <thead class="table-dark">
+                        <thead class="table-dark table-borderless">
                             <tr>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Categoria</th>

@@ -3,7 +3,7 @@
 
         <h1 class="text-center">Editar cita: {{id}}</h1>
         <form v-on:submit.prevent="saveCita()" method="POST" class="d-flex justify-content-center flex-column">
-            <input type="text" v-model="cita.name" name="name" placeholder="Nombre cita" class="mt-3">
+            <input type="text" v-model="cita.name" name="name" placeholder="Nombre cita" class="form-control mt-3">
             <div class="form-floating mt-3">
                 <select v-model="cita.id_category_cita" name="id_category_cita" class="form-select" id="floatingSelect" aria-label="Floating label select example">
                     <option v-for="category in categories.data"  :key="category.id" >
@@ -25,7 +25,7 @@
                 </label>
             </div>
             <input type="date" v-model="cita.fecha" name="fecha" class="mt-3">
-            <input type="text" v-model="cita.observacion" name="observacion" placeholder="Observacion" class="mt-3">
+            <input type="text" v-model="cita.observacion" name="observacion" placeholder="Observacion" class="form-control mt-3">
             <input type="submit" class="btn btn-success w-25 mt-3" value="Guardar">
         </form>
         

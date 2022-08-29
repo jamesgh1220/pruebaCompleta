@@ -2186,7 +2186,7 @@ var render = function render() {
       value: _vm.cita.name,
       expression: "cita.name"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-control mt-3",
     attrs: {
       type: "text",
       name: "name",
@@ -2311,7 +2311,7 @@ var render = function render() {
       value: _vm.cita.observacion,
       expression: "cita.observacion"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-control mt-3",
     attrs: {
       type: "text",
       name: "observacion",
@@ -2580,7 +2580,7 @@ var staticRenderFns = [function () {
       _c = _vm._self._c;
 
   return _c("thead", {
-    staticClass: "table-dark"
+    staticClass: "table-dark table-borderless"
   }, [_c("tr", [_c("th", {
     attrs: {
       scope: "col"
