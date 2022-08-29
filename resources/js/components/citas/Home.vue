@@ -1,28 +1,34 @@
 <template>
-    <div class="container-fluid w-50">
-        <h1 class="text-center">Crear Cita</h1>
-        <form v-on:submit.prevent="saveCita" name="name" method="POST" class="d-flex justify-content-center flex-column">
-            <input type="text" v-model="name" placeholder="Nombre cita" class="mt-3">
-            <div class="form-floating mt-3">
-                <select v-model="id_category_cita" name="id_category_cita" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option v-for="category in categories.data"  :key="category.id">
-                        {{category.name}}
-                    </option>
-                </select>
-                <label style="color: black;" for="floatingSelect">Seleccione una categoria</label>
+    <div class="container-fluid w-50 mt-3">
+        <div class="card border-success bg-transparent">
+            <div class="card-header text-center">
+                <h3>Crear Cita</h3>
             </div>
-            <div class="form-floating mt-3">
-                <select v-model="id_state_cita" name="id_category_cita" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                    <option v-for="state in states.data"  :key="state.id">
-                        {{state.name}}
-                    </option>
-                </select>
-                <label style="color: black;" for="floatingSelect">Estado de la cita</label>
+            <div class="card-body">
+                <form v-on:submit.prevent="saveCita" name="name" method="POST" class="d-flex justify-content-center flex-column">
+                    <input type="text" v-model="name" class="form-control" placeholder="Nombre cita">
+                    <div class="form-floating mt-3">
+                        <select v-model="id_category_cita" name="id_category_cita" class="form-select">
+                            <option v-for="category in categories.data"  :key="category.id">
+                                {{category.name}}
+                            </option>
+                        </select>
+                        <label style="color: black;">Seleccione una categoria</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                        <select v-model="id_state_cita" name="id_category_cita" class="form-select" aria-label="Floating label select example">
+                            <option v-for="state in states.data"  :key="state.id">
+                                {{state.name}}
+                            </option>
+                        </select>
+                        <label style="color: black;">Estado de la cita</label>
+                    </div>
+                    <input type="date" v-model="fecha" class="form-control mt-3" aria-describedby="">
+                    <input type="text" v-model="observacion" placeholder="Observacion" class="form-control mt-3">
+                    <input type="submit" class="btn btn-success w-25 mt-3" value="Guardar">
+                </form>
             </div>
-            <input type="date" v-model="fecha" class="mt-3">
-            <input type="text" v-model="observacion" placeholder="Observacion" class="mt-3">
-            <input type="submit" class="btn btn-success w-25 mt-3" value="Guardar">
-        </form>
+        </div>
     </div>
 </template>
 

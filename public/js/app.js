@@ -2358,10 +2358,12 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container-fluid w-50"
-  }, [_c("h1", {
-    staticClass: "text-center"
-  }, [_vm._v("Crear Cita")]), _vm._v(" "), _c("form", {
+    staticClass: "container-fluid w-50 mt-3"
+  }, [_c("div", {
+    staticClass: "card border-success bg-transparent"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("form", {
     staticClass: "d-flex justify-content-center flex-column",
     attrs: {
       name: "name",
@@ -2380,7 +2382,7 @@ var render = function render() {
       value: _vm.name,
       expression: "name"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-control",
     attrs: {
       type: "text",
       placeholder: "Nombre cita"
@@ -2405,9 +2407,7 @@ var render = function render() {
     }],
     staticClass: "form-select",
     attrs: {
-      name: "id_category_cita",
-      id: "floatingSelect",
-      "aria-label": "Floating label select example"
+      name: "id_category_cita"
     },
     on: {
       change: function change($event) {
@@ -2423,13 +2423,10 @@ var render = function render() {
   }, _vm._l(_vm.categories.data, function (category) {
     return _c("option", {
       key: category.id
-    }, [_vm._v("\n                    " + _vm._s(category.name) + "\n                ")]);
+    }, [_vm._v("\n                            " + _vm._s(category.name) + "\n                        ")]);
   }), 0), _vm._v(" "), _c("label", {
     staticStyle: {
       color: "black"
-    },
-    attrs: {
-      "for": "floatingSelect"
     }
   }, [_vm._v("Seleccione una categoria")])]), _vm._v(" "), _c("div", {
     staticClass: "form-floating mt-3"
@@ -2443,7 +2440,6 @@ var render = function render() {
     staticClass: "form-select",
     attrs: {
       name: "id_category_cita",
-      id: "floatingSelect",
       "aria-label": "Floating label select example"
     },
     on: {
@@ -2460,13 +2456,10 @@ var render = function render() {
   }, _vm._l(_vm.states.data, function (state) {
     return _c("option", {
       key: state.id
-    }, [_vm._v("\n                    " + _vm._s(state.name) + "\n                ")]);
+    }, [_vm._v("\n                            " + _vm._s(state.name) + "\n                        ")]);
   }), 0), _vm._v(" "), _c("label", {
     staticStyle: {
       color: "black"
-    },
-    attrs: {
-      "for": "floatingSelect"
     }
   }, [_vm._v("Estado de la cita")])]), _vm._v(" "), _c("input", {
     directives: [{
@@ -2475,9 +2468,10 @@ var render = function render() {
       value: _vm.fecha,
       expression: "fecha"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-control mt-3",
     attrs: {
-      type: "date"
+      type: "date",
+      "aria-describedby": ""
     },
     domProps: {
       value: _vm.fecha
@@ -2495,7 +2489,7 @@ var render = function render() {
       value: _vm.observacion,
       expression: "observacion"
     }],
-    staticClass: "mt-3",
+    staticClass: "form-control mt-3",
     attrs: {
       type: "text",
       placeholder: "Observacion"
@@ -2515,10 +2509,17 @@ var render = function render() {
       type: "submit",
       value: "Guardar"
     }
-  })])]);
+  })])])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "card-header text-center"
+  }, [_c("h3", [_vm._v("Crear Cita")])]);
+}];
 render._withStripped = true;
 
 
@@ -2540,17 +2541,17 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container"
+    staticClass: "container w-75"
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
     staticClass: "col-auto"
-  }, [_c("h1", {
+  }, [_c("h3", {
     staticClass: "text-center"
   }, [_vm._v("Listado de citas")]), _vm._v(" "), _c("div", {
-    staticClass: "table-responsive ml-1"
+    staticClass: "table-responsive"
   }, [_c("table", {
-    staticClass: "table table-borderless w-50 mt-5"
+    staticClass: "table table-borderless mt-3"
   }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.citas, function (cita) {
     return _c("tr", {
       key: cita.id

@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
+    <div class="container w-75">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h1 class="text-center">Listado de citas</h1>
-                <div class="table-responsive ml-1">
-                    <table class="table table-borderless w-50 mt-5">
+                <h3 class="text-center">Listado de citas</h3>
+                <div class="table-responsive">
+                    <table class="table table-borderless mt-3">
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">Nombre</th>
