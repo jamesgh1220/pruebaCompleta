@@ -15,7 +15,7 @@ class CategoryCitaController extends Controller
     public function index()
     {
         $categories = CategoryCita::all();
-        return response()->json($categories);
+        return response()->json(['data' => $categories, 'supuesto_error' => 907]);
     }
 
     /**

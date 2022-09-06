@@ -2124,7 +2124,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/category_citas').then(function (response) {
-                _this2.categories = response;
+                console.log(response.data.supuesto_error);
+                _this2.categories = response.data; //data pq asi se definio desde el controller, state_citas no para comparar dftes metodos
               })["catch"](function (error) {
                 console.log(error);
               });
@@ -53246,8 +53247,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\pruebaCompleta\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\pruebaCompleta\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\pruebaCompleta\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\pruebaCompleta\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

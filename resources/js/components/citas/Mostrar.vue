@@ -79,8 +79,6 @@
         },
         async created(){
             await axios.get('/citas').then(response=> this.citas = response.data).catch(error=>console.log(error));
-            
         }
-        
     }
 </script>

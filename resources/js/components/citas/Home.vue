@@ -67,7 +67,10 @@ import axios from 'axios';
         }
         ,
         async mounted(){
-            await axios.get('/category_citas').then(response => {this.categories = response}).catch(error => {console.log(error)})
+            await axios.get('/category_citas').then(response => {
+                console.log(response.data.supuesto_error) 
+                this.categories = response.data //data pq asi se definio desde el controller, state_citas no para comparar dftes metodos
+            }).catch(error => {console.log(error)})
             await axios.get('/state_citas').then(response => {this.states = response}).catch(error => {console.log(error)})
         }
     }
